@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRACED</title>
+<meta name="description" content="TRACED: Turkish Retrieval-Augmented Claim Evaluation and Detection. CS491/CS492 Senior Design Project, Bilkent University.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232b67d1'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff; --text: #1d1c1b; --muted: #5c5b57; --line: #e4e1da; --soft: #f6f5f2; --accent: #2b67d1;
+    --cds-text-primary: var(--text); --cds-text-secondary: var(--muted);
+    --cds-chart-axis: #a29f96; --cds-chart-grid: #e2dfd8; --cds-chart-categorical-1: #2b67d1;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161615; --text: #ecebe8; --muted: #a9a79f; --line: #33322e; --soft: #1f1f1d; --accent: #78a2f2;
+      --cds-chart-axis: #7f7c74; --cds-chart-grid: #3a3935; --cds-chart-categorical-1: #78a2f2;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  main { max-width: 760px; margin: 0 auto; padding: 64px 20px 48px; }
+  .eyebrow { margin: 0 0 14px; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 0; font-size: 44px; line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; }
+  .tagline { margin: 10px 0 4px; font-size: 20px; }
+  .pron { margin: 0; color: var(--muted); font-size: 15px; }
+  section { margin-top: 48px; }
+  h2 { margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  p { margin: 0 0 14px; }
+  figure { margin: 0; overflow-x: auto; }
+  figure svg { display: block; width: 100%; min-width: 620px; height: auto; }
+  .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; padding: 0; margin: 0 0 22px; list-style: none; }
+  .people li { padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--soft); }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  .reports { list-style: none; padding: 0; margin: 0 0 12px; border-top: 1px solid var(--line); }
+  .reports li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .reports .when { color: var(--muted); white-space: nowrap; }
+  .note { color: var(--muted); font-size: 15px; }
+  footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  @media (max-width: 560px) {
+    main { padding-top: 40px; }
+    h1 { font-size: 36px; }
+    .reports li { flex-direction: column; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">CS491 / CS492 Senior Design Project &middot; Bilkent University</p>
+    <h1>TRACED</h1>
+    <p class="tagline">Turkish Retrieval-Augmented Claim Evaluation and Detection</p>
+    <p class="pron">Pronounced like the English word &ldquo;traced&rdquo; (/treɪst/)</p>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>We propose an analyst web application that discovers Turkish claims in X (Twitter) posts, investigates them using external evidence, and tracks how they spread and change over time. It shows fact-checkers which claims are spreading fastest, so they know what to check first, while a person always makes the final decision. The project combines a working platform with a Turkish evidence-ranking model that we train ourselves and a measured evaluation against simpler baselines.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <figure><svg viewBox="0 0 760 328" role="img" aria-label="Each claim reaches the analyst with its evidence and its spread" font-size="13"><defs><marker id="pipe-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--cds-chart-axis)"></path></marker></defs><text data-claude-text-id="title" x="24" y="28" font-size="15" font-weight="600" fill="var(--cds-text-primary)">Each claim reaches the analyst with its evidence and its spread</text><g data-claude-anchor="connectors" fill="none" stroke="var(--cds-chart-axis)" stroke-width="1.25"><path d="M184 96H208" marker-end="url(#pipe-arrow)"></path><path d="M368 96H392" marker-end="url(#pipe-arrow)"></path><path d="M552 96H576" marker-end="url(#pipe-arrow)"></path><path d="M656 140V188" marker-end="url(#pipe-arrow)"></path><path d="M576 232H552" marker-end="url(#pipe-arrow)"></path><path d="M392 232H368" marker-end="url(#pipe-arrow)"></path><path d="M208 232H184" marker-end="url(#pipe-arrow)"></path></g><g data-claude-anchor="step-posts"><rect x="24" y="52" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="posts" x="104" y="76" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Posts</text><text data-claude-text-id="posts-1" x="104" y="92" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">recorded collections,</text><text data-claude-text-id="posts-2" x="104" y="108" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">live X if available,</text><text data-claude-text-id="posts-3" x="104" y="124" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">or claims typed in</text></g><g data-claude-anchor="step-claims"><rect x="208" y="52" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="claim-detection" x="288" y="76" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Claim detection</text><text data-claude-text-id="claims-1" x="288" y="92" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">checkable claims</text><text data-claude-text-id="claims-2" x="288" y="108" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">split from opinions;</text><text data-claude-text-id="claims-3" x="288" y="124" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">date, place, entities</text></g><g data-claude-anchor="step-grouping"><rect x="392" y="52" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="grouping" x="472" y="76" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Grouping</text><text data-claude-text-id="grouping-1" x="472" y="92" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">sentence embeddings</text><text data-claude-text-id="grouping-2" x="472" y="108" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">merge paraphrases</text><text data-claude-text-id="grouping-3" x="472" y="124" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">into one cluster</text></g><g data-claude-anchor="step-spread"><rect x="576" y="52" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="spread-analysis" x="656" y="76" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Spread analysis</text><text data-claude-text-id="spread-1" x="656" y="92" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">growth sets priority;</text><text data-claude-text-id="spread-2" x="656" y="108" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">repost graph and</text><text data-claude-text-id="spread-3" x="656" y="124" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">coordination signals</text></g><g data-claude-anchor="step-search"><rect x="576" y="188" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="evidence-search" x="656" y="212" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Evidence search</text><text data-claude-text-id="search-1" x="656" y="228" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">fact-checks, official</text><text data-claude-text-id="search-2" x="656" y="244" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">sources and news,</text><text data-claude-text-id="search-3" x="656" y="260" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">repeated if needed</text></g><g data-claude-anchor="step-ranking"><rect x="392" y="188" width="160" height="88" rx="8" fill="var(--cds-chart-categorical-1)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></rect><text data-claude-text-id="evidence-ranking" x="472" y="212" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Evidence ranking</text><text data-claude-text-id="ranking-1" x="472" y="228" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">our fine-tuned</text><text data-claude-text-id="ranking-2" x="472" y="244" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">Turkish model orders</text><text data-claude-text-id="ranking-3" x="472" y="260" text-anchor="middle" font-size="11.5" fill="var(--cds-text-primary)">the passages</text></g><g data-claude-anchor="step-assessment"><rect x="208" y="188" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="assessment" x="288" y="212" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Assessment</text><text data-claude-text-id="assess-1" x="288" y="228" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">an existing LLM picks</text><text data-claude-text-id="assess-2" x="288" y="244" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">one of four labels,</text><text data-claude-text-id="assess-3" x="288" y="260" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">citing the passages</text></g><g data-claude-anchor="step-review"><rect x="24" y="188" width="160" height="88" rx="8" fill="none" fill-opacity="1" stroke="var(--cds-chart-axis)" stroke-width="1.25"></rect><text data-claude-text-id="analyst-review" x="104" y="212" text-anchor="middle" font-weight="600" fill="var(--cds-text-primary)">Analyst review</text><text data-claude-text-id="review-1" x="104" y="228" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">priority queue,</text><text data-claude-text-id="review-2" x="104" y="244" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">evidence and spread;</text><text data-claude-text-id="review-3" x="104" y="260" text-anchor="middle" font-size="11.5" fill="var(--cds-text-secondary)">a human decides</text></g><g data-claude-anchor="key"><rect x="24" y="298" width="12" height="12" rx="3" fill="var(--cds-chart-categorical-1)" fill-opacity="0.12" stroke="var(--cds-chart-categorical-1)" stroke-width="2"></rect><text data-claude-text-id="key-note" x="44" y="308" font-size="11.5" fill="var(--cds-text-secondary)">The Turkish ranking model we train ourselves</text></g></svg></figure>
+  </section>
+
+  <section>
+    <h2>Team</h2>
+    <ul class="people">
+      <li>Mehmet Öztürk</li>
+      <li>Ateş Tülümen</li>
+      <li>Emir Akay</li>
+      <li>Ozan Süha Atamer</li>
+      <li>Mustafa Akseli</li>
+    </ul>
+    <dl>
+      <dt>Supervisor</dt><dd>Prof. Dr. Özgür Ulusoy</dd>
+      <dt>Innovation expert</dt><dd>Dr. Tolga Sönmez</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Reports</h2>
+    <ul class="reports">
+      <li><span>Project Specification</span><span class="when">Due 20 November 2026</span></li>
+      <li><span>Analysis and Requirements Report</span><span class="when">Due 11 December 2026</span></li>
+    </ul>
+    <p class="note">Reports will be published here as they are submitted.</p>
+  </section>
+
+  <footer>Department of Computer Engineering, Bilkent University &middot; 2026&ndash;2027</footer>
+</main>
+</body>
+</html>
